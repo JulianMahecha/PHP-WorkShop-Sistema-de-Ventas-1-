@@ -13,9 +13,15 @@
 
             if ($result) {
                 $data = mysqli_fetch_array($query);
-                print_r($data);
+                session_start();
+                $_SESSION['active'] = true;
+                $_SESSION['idUser'] = $data['idusuario'];
+                $_SESSION['nombre'] = $data['nombre'];
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['user'] = $data['usuario'];
+                $_SESSION['rol'] = $data['rol'];
             }else{
-                echo mysqli_error($conn);
+                
             }
         }
     }
