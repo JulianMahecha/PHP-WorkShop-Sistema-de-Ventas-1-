@@ -1,3 +1,26 @@
+<?php
+    $alert = '';
+    if(!empty($_POST)){
+        if (empty($_POST['usuario'] ) || empty($_POST['pass']) ) {
+            $alert = 'ingrese su usuario y clave';
+        }else{
+            require_once  "./db/conexion.php";
+            $user = $_POST['usuario'];
+            $pass = $_POST['pass'];
+
+            $query = mysqli_query($conn, "SELECT * FROM usuario WHERE usuario = '$user' AND clave = '$pass'");
+            $result = mysqli_num_rows($query);
+
+            if ($result) {
+                $data = mysqli_fetch_array($query);
+                print_r($data);
+            }else{
+                echo mysqli_error($conn);
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 

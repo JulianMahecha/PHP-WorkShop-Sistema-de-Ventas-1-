@@ -4,5 +4,5 @@ $user = 'root';
 $pass = '';
 $db = 'facturacion';
 
-$conn = @mysqli_connect($host, $user, $pass);
+$conn = mysqli_connect($host, $user, $pass, $db);
 ?>
